@@ -17,9 +17,10 @@ public class DestroyObject : MonoBehaviour
         //{
         //    toggle = GameObject.FindGameObjectWithTag("Sugar");
         //    ingredients = toggle.GetComponent();
-            
-            
+
+
         //}
+        Debug.Log("You Have added " + collision.gameObject.tag);
         Destroy(collision.gameObject);
     }
 }

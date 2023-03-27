@@ -5,6 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - Drawer
+  - Oil
+  - Milk
+  - Egg
+  - Flour
   layers:
   - Default
   - TransparentFX
