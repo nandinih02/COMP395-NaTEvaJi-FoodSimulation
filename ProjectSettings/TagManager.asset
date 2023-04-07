@@ -10,6 +10,8 @@ TagManager:
   - Egg
   - Flour
   - Ingridient
+  - GlassFill
+  - Glass
   layers:
   - Default
   - TransparentFX
