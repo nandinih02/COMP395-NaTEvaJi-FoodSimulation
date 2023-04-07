@@ -9,6 +9,7 @@ TagManager:
   - Milk
   - Egg
   - Flour
+  - Ingridient
   layers:
   - Default
   - TransparentFX

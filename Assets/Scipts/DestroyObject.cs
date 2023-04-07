@@ -20,7 +20,11 @@ public class DestroyObject : MonoBehaviour
 
 
         //}
-        Debug.Log("You Have added " + collision.gameObject.tag);
-        Destroy(collision.gameObject);
+
+        if (collision.gameObject.CompareTag("Ingridient"))
+        {
+            Debug.Log("You Have added " + collision.gameObject.tag);
+            Destroy(collision.gameObject);
+        }
     }
 }
