@@ -10,6 +10,9 @@ TagManager:
   - Egg
   - Flour
   - Ingridient
+  - Bowl
+  - Whisk
+  - Butter
   layers:
   - Default
   - TransparentFX
