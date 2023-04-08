@@ -6,7 +6,7 @@ using TMPro;
 public class Temperature : MonoBehaviour
 {
     public TextMeshProUGUI temperatura;
-    private int tempAmount;
+    public int tempAmount;
     // Start is called before the first frame update
     void Start()
     {
