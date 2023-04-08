@@ -5,7 +5,7 @@ using UnityEngine;
 public class BowlController : MonoBehaviour
 {
 
-    private GameObject glass;
+    private GameObject glass, spoon;
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -24,17 +24,16 @@ public class BowlController : MonoBehaviour
             glass.GetComponent<GlassFilling>().touch = 0;
 
         }
+        if (collision.gameObject.CompareTag("Spoon"))
+        {
+            spoon = collision.gameObject;
+            GameObject child = spoon.transform.GetChild(0).gameObject;
 
-    }
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+            child.SetActive(false);
+            spoon.GetComponent<SpoonFilling>().touch = 0;
+        }
 
-    // Update is called once per frame
-    void Update()
-    {
+
+        }
         
-    }
 }

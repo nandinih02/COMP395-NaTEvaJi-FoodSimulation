@@ -12,6 +12,10 @@ TagManager:
   - Ingridient
   - GlassFill
   - Glass
+  - Butter
+  - Bowl
+  - Whisk
+  - Spoon
   layers:
   - Default
   - TransparentFX
