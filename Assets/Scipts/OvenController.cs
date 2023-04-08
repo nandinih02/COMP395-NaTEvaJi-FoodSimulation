@@ -12,7 +12,7 @@ public class OvenController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Pan"))
         {
-            StartCoroutine(ShowMessage("Pan in the oven", 2));
+            StartCoroutine(ShowMessage("Pan is in the oven", 2));
            
             int tempAmount = this.gameObject.GetComponent<Temperature>().tempAmount;
             if (tempAmount == 350 && !scoreUp)
@@ -31,7 +31,7 @@ public class OvenController : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Bowl"))
         {
-            StartCoroutine(ShowMessage("Cautions!!! Bowl in the oven!", 2));
+            StartCoroutine(ShowMessage("Cautions!!! Bowl is in the oven! -200 points", 2));
            // print("Cautions!!! Bowl in the oven");
             int tempAmount = this.gameObject.GetComponent<Temperature>().tempAmount;
             if (tempAmount >0)

@@ -313,10 +313,6 @@ public class BowlController : MonoBehaviour
                     eggScoreDown = true;
                 }
             }
-
-
-
-
             Destroy(collision.gameObject);
         }
 
