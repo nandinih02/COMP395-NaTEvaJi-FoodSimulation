@@ -25,7 +25,7 @@ public class Temperature : MonoBehaviour
     {
         if (tempAmount < 500)
         {
-            tempAmount += 10;
+            tempAmount += 25;
         }
     }
 
@@ -33,7 +33,7 @@ public class Temperature : MonoBehaviour
     {
         if (tempAmount > 0)
         {
-            tempAmount -= 10;
+            tempAmount -= 25;
         }
     }
 }

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 698758112557125162}
   - component: {fileID: 2194354097031759493}
   - component: {fileID: 2194354097031759492}
+  - component: {fileID: 8168446455907228178}
   m_Layer: 0
   m_Name: Egg
   m_TagString: Egg
@@ -115,3 +116,15 @@ CapsuleCollider:
   m_Height: 3.5750797
   m_Direction: 1
   m_Center: {x: 0, y: 0.73662627, z: 0}
+--- !u!114 &8168446455907228178
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1347280788517580799}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcf83efafda660a46adc179da3cacca8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -1,11 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BowlController : MonoBehaviour
 {
-
+    
     private GameObject glass, spoon;
+    public float sugarAmount=0f;
+    public Toggle toggleSugar;
+    
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -17,13 +21,53 @@ public class BowlController : MonoBehaviour
             GameObject child2 = glass.transform.GetChild(2).gameObject;
             GameObject child3 = glass.transform.GetChild(3).gameObject;
 
-            child0.SetActive(false);
-            child1.SetActive(false);
-            child2.SetActive(false);
-            child3.SetActive(false);
-            glass.GetComponent<GlassFilling>().touch = 0;
 
+
+
+
+
+
+          //Check Sugar
+            if (child0.activeSelf)
+            {
+                print("Sugar 1/4");
+                child0.SetActive(false);
+                sugarAmount += 1 / 4f;
+            }
+
+            if(child1.activeSelf)
+            {
+                print("Sugar 2/4");
+                child1.SetActive(false);
+                sugarAmount += 1 / 4f;
+            }
+            if(child2.activeSelf)
+            {
+                print("Sugar 3/4");
+                child2.SetActive(false);
+                sugarAmount += 1 / 4f;
+            }
+            if(child3.activeSelf)
+            {
+                print("Sugar 4/4");
+                child3.SetActive(false);
+                sugarAmount += 1 / 4f;
+            }
+           
+            glass.GetComponent<GlassFilling>().touch = 0;
+            print("Sugar =" + sugarAmount);
+            if (sugarAmount >= 2) 
+            {
+                toggleSugar.isOn = true;
+            }
         }
+
+
+
+
+
+
+
         if (collision.gameObject.CompareTag("Spoon"))
         {
             spoon = collision.gameObject;
@@ -34,6 +78,11 @@ public class BowlController : MonoBehaviour
         }
 
 
-        }
-        
+    }
+
+    private void Update()
+    {
+
+    }
+
 }

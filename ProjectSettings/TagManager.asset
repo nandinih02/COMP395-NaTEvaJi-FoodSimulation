@@ -16,6 +16,7 @@ TagManager:
   - Bowl
   - Whisk
   - Spoon
+  - Sugar
   layers:
   - Default
   - TransparentFX
