@@ -17,6 +17,8 @@ TagManager:
   - Whisk
   - Spoon
   - Sugar
+  - Cocoa
+  - Vanilla
   layers:
   - Default
   - TransparentFX

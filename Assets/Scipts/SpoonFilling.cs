@@ -13,7 +13,7 @@ public class SpoonFilling : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Ingridient"))
+        if (collision.gameObject.CompareTag("Vanilla"))
         {
             if (touch <= 2)
             {
