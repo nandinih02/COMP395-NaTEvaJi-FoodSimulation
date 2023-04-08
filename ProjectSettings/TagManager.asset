@@ -19,6 +19,7 @@ TagManager:
   - Sugar
   - Cocoa
   - Vanilla
+  - Pan
   layers:
   - Default
   - TransparentFX

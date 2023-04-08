@@ -10,7 +10,9 @@ public class BowlController : MonoBehaviour
     public float sugarAmount=0f, flourAmount=0f, cocoaAmount = 0f, milkAmount = 0f, oilAmount = 0f, vanillaAmount = 0f;
     public int eggAmount = 0;
     public Toggle toggleSugar, toggleFlour,toggleCocoa, toggleMilk, toggleOil, toggleVanilla, toggleEgg;
-
+    private bool scoreUp = false, scoreDown = false, flourScoreUp = false, flourScoreDown = false;
+    private bool cocoaScoreUp = false, cocoaScoreDown = false, milkScoreUp = false, milkScoreDown = false;
+    private bool oilScoreUp = false, oilScoreDown = false, eggScoreUp = false, eggScoreDown = false, vanillaScoreUp = false, vanillaScoreDown = false;
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -70,9 +72,22 @@ public class BowlController : MonoBehaviour
             }
             glass.GetComponent<GlassFilling>().touch = 0;
             print("Sugar =" + sugarAmount);
+            // Change Score
             if (sugarAmount >= 2)
-            {
-                toggleSugar.isOn = true;
+            {                
+                toggleSugar.isOn = true;                             
+                if (sugarAmount == 2)
+                {  if (!scoreUp)
+                   {
+                      ScoreStatic.score += 50;
+                     scoreUp = true;
+                   }
+                }
+                else if(!scoreDown)
+                {
+                  ScoreStatic.score -= 20;
+                       scoreDown = true;
+                }                                    
             }
 
             //Check Flour
@@ -102,9 +117,23 @@ public class BowlController : MonoBehaviour
             }
             glass.GetComponent<GlassFilling>().touch = 0;
             print("Flour =" + flourAmount);
+            // Change Score
             if (flourAmount >= 1.75)
             {
                 toggleFlour.isOn = true;
+                if (flourAmount == 1.75)
+                {
+                    if (!flourScoreUp)
+                    {
+                        ScoreStatic.score += 50;
+                        flourScoreUp = true;
+                    }
+                }
+                else if (!flourScoreDown)
+                {
+                    ScoreStatic.score -= 20;
+                    flourScoreDown = true;
+                }
             }
 
             //Check Cocoa
@@ -134,9 +163,24 @@ public class BowlController : MonoBehaviour
             }
             glass.GetComponent<GlassFilling>().touch = 0;
             print("Cocoa =" + cocoaAmount);
+            
+            // Change Score
             if (cocoaAmount >= 0.75)
             {
                 toggleCocoa.isOn = true;
+                if (cocoaAmount == 0.75)
+                {
+                    if (!cocoaScoreUp)
+                    {
+                        ScoreStatic.score += 50;
+                        cocoaScoreUp = true;
+                    }
+                }
+                else if (!cocoaScoreDown)
+                {
+                    ScoreStatic.score -= 20;
+                    cocoaScoreDown = true;
+                }
             }
 
 
@@ -167,9 +211,24 @@ public class BowlController : MonoBehaviour
             }
             glass.GetComponent<GlassFilling>().touch = 0;
             print("Milk =" + milkAmount);
+           
+            // Change Score
             if (milkAmount >= 1.0)
             {
                 toggleMilk.isOn = true;
+                if (milkAmount == 1.0)
+                {
+                    if (!milkScoreUp)
+                    {
+                        ScoreStatic.score += 50;
+                        milkScoreUp = true;
+                    }
+                }
+                else if (!milkScoreDown)
+                {
+                    ScoreStatic.score -= 20;
+                    milkScoreDown = true;
+                }
             }
 
             //Check Oil
@@ -199,12 +258,32 @@ public class BowlController : MonoBehaviour
             }
             glass.GetComponent<GlassFilling>().touch = 0;
             print("Oil =" + oilAmount);
-            if (oilAmount >= 1.0)
+            if (oilAmount >= 0.5)
             {
                 toggleOil.isOn = true;
             }
 
+            // Change Score
+            if (oilAmount >= 0.5)
+            {
+                toggleOil.isOn = true;
+                if (oilAmount == 0.5)
+                {
+                    if (!oilScoreUp)
+                    {
+                        ScoreStatic.score += 50;
+                        oilScoreUp = true;
+                    }
+                }
+                else if (!oilScoreDown)
+                {
+                    ScoreStatic.score -= 20;
+                    oilScoreDown = true;
+                }
+            }
+
         }
+
 //Check Eggs
         if (collision.gameObject.CompareTag("Egg"))
         {
@@ -214,6 +293,30 @@ public class BowlController : MonoBehaviour
             {
                 toggleEgg.isOn = true;
             }
+
+
+            // Change Score
+            if (eggAmount >= 2)
+            {
+                toggleEgg.isOn = true;
+                if (eggAmount == 2)
+                {
+                    if (!eggScoreUp)
+                    {
+                        ScoreStatic.score += 50;
+                        eggScoreUp = true;
+                    }
+                }
+                else if (!eggScoreDown)
+                {
+                    ScoreStatic.score -= 20;
+                    eggScoreDown = true;
+                }
+            }
+
+
+
+
             Destroy(collision.gameObject);
         }
 
@@ -226,10 +329,26 @@ public class BowlController : MonoBehaviour
             child.SetActive(false);
             vanillaAmount += 1 / 2f;
             print("Vanilla =" + vanillaAmount);
+            
+            // Change Score
             if (vanillaAmount >= 0.5f)
             {
                 toggleVanilla.isOn = true;
+                if (vanillaAmount == 0.5f)
+                {
+                    if (!vanillaScoreUp)
+                    {
+                        ScoreStatic.score += 50;
+                        vanillaScoreUp = true;
+                    }
+                }
+                else if (!vanillaScoreDown)
+                {
+                    ScoreStatic.score -= 20;
+                    vanillaScoreDown = true;
+                }
             }
+
             spoon.GetComponent<SpoonFilling>().touch = 0;
         }
 
