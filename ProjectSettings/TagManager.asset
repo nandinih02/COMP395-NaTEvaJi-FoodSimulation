@@ -20,6 +20,7 @@ TagManager:
   - Cocoa
   - Vanilla
   - Pan
+  - Mix
   layers:
   - Default
   - TransparentFX

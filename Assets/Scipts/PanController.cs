@@ -2,10 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class PanController : MonoBehaviour
 {
+    public TextMeshProUGUI messageText;
     private bool scoreUp = false, scoreDown = false;
+    private int ingridientCount = 0;
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -19,44 +22,68 @@ public class PanController : MonoBehaviour
             Toggle milk = bowl.GetComponent<BowlController>().toggleMilk;
             Toggle oil = bowl.GetComponent<BowlController>().toggleOil;
             Toggle vanilla = bowl.GetComponent<BowlController>().toggleVanilla;
-
-            print("Dough in the pan");
-            
-            if (!scoreUp)
-            {
+                        
+           
                 if (sugar.isOn)
                 {
-                    ScoreStatic.score += 20;                   
+                    ScoreStatic.score += 20;
+                    ++ingridientCount;
                 }
                 if (flour.isOn)
                 {
                     ScoreStatic.score += 20;
+                    ++ingridientCount;
                 }
                 if (cocoa.isOn)
                 {
                     ScoreStatic.score += 20;
+                    ++ingridientCount;
                 }
                 if (egg.isOn)
                 {
                     ScoreStatic.score += 20;
+                    ++ingridientCount;
                 }
                 if (milk.isOn)
                 {
                     ScoreStatic.score += 20;
+                    ++ingridientCount;
                 }
                 if (oil.isOn)
                 {
                     ScoreStatic.score += 20;
+                    ++ingridientCount;
                 }
                 if (vanilla.isOn)
                 {
                     ScoreStatic.score += 20;
+                    ++ingridientCount;
                 }
                 
-                scoreUp = true;
+            
+
+            if (ingridientCount >0)
+            {
+                StartCoroutine(ShowMessage("Dough in the pan", 1));
+                if (ingridientCount < 7 )
+                {
+                    StartCoroutine(ShowMessage("You lack some ingridients", 1));
+                }
             }
-          
+            else
+            {
+                StartCoroutine(ShowMessage("Bowl is empty", 2));
+            }
+           
         }
     }
- }
+
+    IEnumerator ShowMessage(string message, float delay)
+    {
+        messageText.text = message;
+        messageText.enabled = true;
+        yield return new WaitForSeconds(delay);
+        messageText.enabled = false;
+    }
+}
 
