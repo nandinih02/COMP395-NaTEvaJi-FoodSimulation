@@ -10,6 +10,7 @@ public class ScrambledEggRecipe : MonoBehaviour
     public GameObject butter;
     public GameObject bowl;
     public GameObject fryingPan;
+    public static bool currentStepComplete = false;
 
     public List<GameObject> recipeSteps; // list of GameObjects representing each step of the recipe
     public int currentStepIndex = 0; // index of the current step in the recipeSteps list
@@ -49,14 +50,13 @@ public class ScrambledEggRecipe : MonoBehaviour
         if (currentStepComplete)
         {
                 // the recipe is complete, do something here
-                Debug.Log("Recipe complete!");
-                Destroy(bowl);
-            GameObject spawnedObject = Instantiate(ScrambledEgg, spawnPosition, Quaternion.identity);
+                Debug.Log("Mix complete!");
+           // GameObject spawnedObject = Instantiate(ScrambledEgg, spawnPosition, Quaternion.identity);
 
         }
     }
 
-    private bool currentStepComplete = false;
+
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -82,7 +82,7 @@ public class ScrambledEggRecipe : MonoBehaviour
             currentStepIndex++;
 
         }
-        Debug.Log(currentStepIndex);
+     //   Debug.Log(currentStepIndex);
         if (currentStepIndex < recipeSteps.Count)
         {
             currentStepComplete = false;
