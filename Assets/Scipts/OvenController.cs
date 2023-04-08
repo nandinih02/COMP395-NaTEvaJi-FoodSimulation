@@ -31,7 +31,7 @@ public class OvenController : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Bowl"))
         {
-            StartCoroutine(ShowMessage("Cautions!!! Bowl is in the oven! -200 points", 2));
+            StartCoroutine(ShowMessage("Cautions!!! Bowl is in the oven!", 2));
            // print("Cautions!!! Bowl in the oven");
             int tempAmount = this.gameObject.GetComponent<Temperature>().tempAmount;
             if (tempAmount >0)
