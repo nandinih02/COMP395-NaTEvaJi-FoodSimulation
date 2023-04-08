@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Menu : MonoBehaviour
 {
@@ -18,4 +19,13 @@ public class Menu : MonoBehaviour
         InstructionMenu.SetActive(false);
         InstructionButton.SetActive(true);
     }
+
+    public void ReloadScene()
+    {
+        Scene scene = SceneManager.GetActiveScene();
+        ScoreStatic.score = 0;
+        SceneManager.LoadScene(scene.name);
+        
+    }
+
 }
