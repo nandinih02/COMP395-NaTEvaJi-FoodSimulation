@@ -21,6 +21,7 @@ TagManager:
   - Vanilla
   - Pan
   - Mix
+  - Cake
   layers:
   - Default
   - TransparentFX
