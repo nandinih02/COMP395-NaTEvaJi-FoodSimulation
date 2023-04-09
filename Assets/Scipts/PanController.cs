@@ -8,7 +8,7 @@ public class PanController : MonoBehaviour
 {
     public TextMeshProUGUI messageText;
     private bool scoreUp = false, scoreDown = false;
-    private int ingridientCount = 0;
+    public int ingridientCount = 0;
     private bool floured = false;
 
     private void OnCollisionEnter(Collision collision)

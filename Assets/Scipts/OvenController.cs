@@ -8,6 +8,7 @@ public class OvenController : MonoBehaviour
     public TextMeshProUGUI messageText;
     private bool scoreUp = false, scoreDown = false;
     public GameObject timer;
+   // public GameObject pan;
     private float startTime, endTime, bakingTime ;
     private int tempAmount;
     // Start is called before the first frame update
@@ -24,28 +25,34 @@ public class OvenController : MonoBehaviour
             StartCoroutine(ShowMessage("Pan is in the oven", 2));
            
             tempAmount = this.gameObject.GetComponent<Temperature>().tempAmount;
-                       
-            if(tempAmount < 250)
+            int ingridientCount = collision.gameObject.GetComponent<PanController>().ingridientCount;
+            if (ingridientCount == 0)
             {
-                StartCoroutine(ShowMessage("Set the temperature!", 2));
+                StartCoroutine(ShowMessage("The backing pan is empty!", 2));
             }
             else
             {
-                StartCoroutine(ShowMessage("Start baking", 2));
-                startTime = timer.GetComponent<Timer>().timeValue;
-            }
+                if (tempAmount < 250)
+                {
+                    StartCoroutine(ShowMessage("Set the temperature!", 2));
+                }
+                else
+                {
+                    StartCoroutine(ShowMessage("Start baking", 2));
+                    startTime = timer.GetComponent<Timer>().timeValue;
+                }
 
-            if (tempAmount == 350 && !scoreUp)
-            {
-                ScoreStatic.score += 50;
-                scoreUp = true;
+                if (tempAmount == 350 && !scoreUp)
+                {
+                    ScoreStatic.score += 50;
+                    scoreUp = true;
+                }
+                else if (tempAmount >= 400 && !scoreDown)
+                {
+                    ScoreStatic.score -= 100;
+                    scoreDown = true;
+                }
             }
-            else if(tempAmount >= 400 && !scoreDown)
-            { 
-                ScoreStatic.score -= 100;
-                scoreDown = true;
-            }
-            
         }
 
 
@@ -58,40 +65,41 @@ public class OvenController : MonoBehaviour
             {
                 ScoreStatic.score -= 200;
             }
-
-        }
-
-             
-
+        }   
     }
-
 
     private void OnCollisionExit(Collision collision)
     {
         if (collision.gameObject.CompareTag("Pan"))
         {
-            endTime = timer.GetComponent<Timer>().timeValue;
-            bakingTime = Mathf.FloorToInt( (endTime - startTime)%60); //time in sec
-            print("Baking time" + bakingTime);
-            if(bakingTime < 20)
-            {
-                ScoreStatic.score -= 50;
-                StartCoroutine(ShowMessage("The dough is not baked", 2));
+            int ingridientCount = collision.gameObject.GetComponent<PanController>().ingridientCount;
+            if (ingridientCount >0)
+            {                
+                endTime = timer.GetComponent<Timer>().timeValue;
+                bakingTime = Mathf.FloorToInt((endTime - startTime) % 60); //time in sec
+                print("Baking time" + bakingTime);
+                if (bakingTime < 20)
+                {
+                    ScoreStatic.score -= 50;
+                    StartCoroutine(ShowMessage("The dough is not baked", 2));
+                }
+                else if (bakingTime > 25)
+                {
+                    ScoreStatic.score -= 50;
+                    StartCoroutine(ShowMessage("The cake is burnt", 2));
+                    GameObject child = collision.gameObject.transform.GetChild(2).gameObject;    //get Cake gameobject
+                    child.SetActive(true);
+                }
+                else
+                {
+                    ScoreStatic.score += 50;
+                    StartCoroutine(ShowMessage("The cake is perfectly baked", 2));
+                    GameObject child = collision.gameObject.transform.GetChild(2).gameObject;    //get Cake gameobject
+                    child.SetActive(true);
+                }
             }
-            else if (bakingTime > 25)
-            {
-                ScoreStatic.score -= 50;
-                StartCoroutine(ShowMessage("The cake is burnt", 2));
-            }
-            else
-            { ScoreStatic.score += 50; 
-            StartCoroutine(ShowMessage("The cake is perfectly baked", 2));
-            }
-
         }
-
     }
-
 
     IEnumerator ShowMessage(string message, float delay)
     {
