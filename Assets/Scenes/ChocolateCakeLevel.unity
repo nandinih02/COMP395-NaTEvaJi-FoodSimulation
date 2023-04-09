@@ -5907,8 +5907,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -221, y: 0}
-  m_SizeDelta: {x: 220.6604, y: 316.7149}
+  m_AnchoredPosition: {x: -220.17905, y: 0}
+  m_SizeDelta: {x: 219.8395, y: 316.7148}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &952432305
 MonoBehaviour:
@@ -8520,8 +8520,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -2.3789978, y: -180.08131}
-  m_SizeDelta: {x: 192.04, y: 285.1715}
+  m_AnchoredPosition: {x: 0.34091, y: -180.08131}
+  m_SizeDelta: {x: 197.48, y: 285.1715}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1188415260
 MonoBehaviour:
@@ -8559,7 +8559,7 @@ MonoBehaviour:
   m_Text: "1. Preheat oven to 350 F\n2. Grease and flour your baking pan \n3. In
     a large bowl combine sugar, flour, cocoa.\n4. Add eggs, milk, oil and vanilla
     to dry mixture and mix about 2 minutes. You can use electric mixer. \n5. Pour
-    into pan and bake 30min\n6. Cool on wire rack\n7. Serve\n"
+    into pan and bake 20min  (~20sec in the game)\n6. Cool on wire rack\n7. Serve\n"
 --- !u!222 &1188415261
 CanvasRenderer:
   m_ObjectHideFlags: 0
