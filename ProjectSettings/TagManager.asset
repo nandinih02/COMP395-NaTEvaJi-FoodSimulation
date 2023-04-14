@@ -22,6 +22,7 @@ TagManager:
   - Pan
   - Mix
   - Cake
+  - ProgressBar
   layers:
   - Default
   - TransparentFX

@@ -5,7 +5,8 @@ using UnityEngine.UI;
 
 public class BowlController : MonoBehaviour
 {
-    
+    public GameObject progressBar;
+
     private GameObject glass, spoon;
     public float sugarAmount=0f, flourAmount=0f, cocoaAmount = 0f, milkAmount = 0f, oilAmount = 0f, vanillaAmount = 0f;
     public int eggAmount = 0;
@@ -13,6 +14,16 @@ public class BowlController : MonoBehaviour
     private bool scoreUp = false, scoreDown = false, flourScoreUp = false, flourScoreDown = false;
     private bool cocoaScoreUp = false, cocoaScoreDown = false, milkScoreUp = false, milkScoreDown = false;
     private bool oilScoreUp = false, oilScoreDown = false, eggScoreUp = false, eggScoreDown = false, vanillaScoreUp = false, vanillaScoreDown = false;
+    // check mixing process
+    private float progress;
+    private float maxValue;
+    private bool scoreAdded = false;
+
+    private void Awake()
+    {
+       
+     }
+
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -74,20 +85,21 @@ public class BowlController : MonoBehaviour
             print("Sugar =" + sugarAmount);
             // Change Score
             if (sugarAmount >= 2)
-            {                
-                toggleSugar.isOn = true;                             
+            {
+                toggleSugar.isOn = true;
                 if (sugarAmount == 2)
-                {  if (!scoreUp)
-                   {
-                      ScoreStatic.score += 50;
-                     scoreUp = true;
-                   }
-                }
-                else if(!scoreDown)
                 {
-                  ScoreStatic.score -= 20;
-                       scoreDown = true;
-                }                                    
+                    if (!scoreUp)
+                    {
+                        ScoreStatic.score += 50;
+                        scoreUp = true;
+                    }
+                }
+                else if (!scoreDown)
+                {
+                    ScoreStatic.score -= 20;
+                    scoreDown = true;
+                }
             }
 
             //Check Flour
@@ -163,7 +175,7 @@ public class BowlController : MonoBehaviour
             }
             glass.GetComponent<GlassFilling>().touch = 0;
             print("Cocoa =" + cocoaAmount);
-            
+
             // Change Score
             if (cocoaAmount >= 0.75)
             {
@@ -211,7 +223,7 @@ public class BowlController : MonoBehaviour
             }
             glass.GetComponent<GlassFilling>().touch = 0;
             print("Milk =" + milkAmount);
-           
+
             // Change Score
             if (milkAmount >= 1.0)
             {
@@ -284,7 +296,7 @@ public class BowlController : MonoBehaviour
 
         }
 
-//Check Eggs
+        //Check Eggs
         if (collision.gameObject.CompareTag("Egg"))
         {
             eggAmount += 1;
@@ -316,7 +328,7 @@ public class BowlController : MonoBehaviour
             Destroy(collision.gameObject);
         }
 
-// Check Vanilla
+        // Check Vanilla
         if (collision.gameObject.CompareTag("Spoon"))
         {
             spoon = collision.gameObject;
@@ -325,7 +337,7 @@ public class BowlController : MonoBehaviour
             child.SetActive(false);
             vanillaAmount += 1 / 2f;
             print("Vanilla =" + vanillaAmount);
-            
+
             // Change Score
             if (vanillaAmount >= 0.5f)
             {
@@ -348,9 +360,40 @@ public class BowlController : MonoBehaviour
             spoon.GetComponent<SpoonFilling>().touch = 0;
         }
 
+        if (collision.gameObject.CompareTag("Mix"))
+        {
+            progressBar.SetActive(true);
+            progressBar.GetComponent<ProgresBar>().fillSpeed = 0.5f;
 
+        }
+    }
 
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Mix"))
+        {
+            progress = progressBar.GetComponent<Slider>().value;
+            maxValue = progressBar.GetComponent<Slider>().maxValue;
+            print("progress: " + progress);
+            print("maxValue: " + maxValue);
+            if (progress < maxValue)
+            {
 
+                print("progress< maxValue: " );
+                progressBar.GetComponent<ProgresBar>().fillSpeed =0f;
+
+            }
+            else
+            {
+                if (!scoreAdded)
+                {
+                 ScoreStatic.score += 40;
+                    scoreAdded = true;
+                    progressBar.SetActive(false);
+                }
+               
+            }
+        }
     }
 
 }

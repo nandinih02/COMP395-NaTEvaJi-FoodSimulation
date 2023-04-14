@@ -18,7 +18,7 @@ public class CakeReadyDetector : MonoBehaviour
             if (child.activeSelf)
             {
                 finalScore = ScoreStatic.score;
-                if (finalScore > 600)
+                if (finalScore >= 630)
                 {
                     finalText.text = "You've mastered it! Your score is " + finalScore.ToString();
 
