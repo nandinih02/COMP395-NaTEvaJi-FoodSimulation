@@ -34,7 +34,7 @@ public class OpenFridge : MonoBehaviour
             }
             else if (openedTime > 10 && !messageShown)
             {
-                StartCoroutine(ShowMessage("Don't leave the frige open too long!", 3f));
+                StartCoroutine(ShowMessage("Don't leave the fridge door open for too long!", 3f));
             }
         }
        

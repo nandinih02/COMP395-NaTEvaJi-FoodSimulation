@@ -334,9 +334,12 @@ public class BowlController : MonoBehaviour
             spoon = collision.gameObject;
             GameObject child = spoon.transform.GetChild(0).gameObject;
 
-            child.SetActive(false);
-            vanillaAmount += 1 / 2f;
-            print("Vanilla =" + vanillaAmount);
+            if (child.activeSelf)
+            {
+                child.SetActive(false);
+                vanillaAmount += 1 / 2f;
+                print("Vanilla =" + vanillaAmount);
+            }
 
             // Change Score
             if (vanillaAmount >= 0.5f)
